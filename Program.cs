@@ -42,12 +42,41 @@ namespace SudokuSolver
 
     private static List<int>[,] GetPossibilities(int[,] filledValues)
     {
-      return new List<int>[9, 9];
+      
     }
 
     private static int[,] ResolvePossibilities(List<int>[,] possibleValues)
     {
 
+    }
+  }
+
+  static class Extensions
+  {
+    public static IEnumerable<T> GetRow<T>(this T[,] input2DArray, int row) where T : IComparable
+    {
+      var width = input2DArray.GetLength(0);
+      var height = input2DArray.GetLength(1);
+
+      if (row >= height)
+        throw new IndexOutOfRangeException("Row Index Out of Range");
+      // Ensures the row requested is within the range of the 2-d array
+
+      for (var i = 0; i < width; i++)
+        yield return input2DArray[i, row];
+    }
+
+    public static IEnumerable<T> GetColumn<T>(this T[,] input2DArray, int col) where T : IComparable
+    {
+      var width = input2DArray.GetLength(0);
+      var height = input2DArray.GetLength(1);
+
+      if (col >= width)
+        throw new IndexOutOfRangeException("Column Index Out of Range");
+      // Ensures the row requested is within the range of the 2-d array
+
+      for (var i = 0; i < height; i++)
+        yield return input2DArray[col, i];
     }
   }
 }
