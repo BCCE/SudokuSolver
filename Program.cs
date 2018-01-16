@@ -42,7 +42,11 @@ namespace SudokuSolver
 
     private static List<int>[,] GetPossibilities(int[,] filledValues)
     {
-      
+      // for each cell that is 0 (i.e. not filled in)
+      //// get other column values
+      //// + get other row values
+      //// + get other block values
+      //// intersect [1..9] with above
     }
 
     private static int[,] ResolvePossibilities(List<int>[,] possibleValues)
@@ -51,7 +55,7 @@ namespace SudokuSolver
     }
   }
 
-  static class Extensions
+  public static class Extensions
   {
     public static IEnumerable<T> GetRow<T>(this T[,] input2DArray, int row) where T : IComparable
     {
@@ -63,7 +67,9 @@ namespace SudokuSolver
       // Ensures the row requested is within the range of the 2-d array
 
       for (var i = 0; i < width; i++)
+      {
         yield return input2DArray[i, row];
+      }
     }
 
     public static IEnumerable<T> GetColumn<T>(this T[,] input2DArray, int col) where T : IComparable
@@ -76,7 +82,9 @@ namespace SudokuSolver
       // Ensures the row requested is within the range of the 2-d array
 
       for (var i = 0; i < height; i++)
+      {
         yield return input2DArray[col, i];
+      } 
     }
   }
 }
